@@ -1,0 +1,25 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="hero-panel">
+    <div class="hero-copy">
+        <p class="eyebrow">YOUR GARAGE, ORGANIZED</p>
+        <h1>Keep every car<br /><span>in one place.</span></h1>
+        <p class="hero-text">A simple, practical way to keep track of the cars in your garage, fleet, or showroom.</p>
+        <a class="btn btn-primary btn-lg" asp-page="/Cars/Create">Add your first car <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="hero-graphic" aria-hidden="true">
+        <div class="graphic-circle"></div>
+        <div class="graphic-car">▰</div>
+    </div>
+</div>
+<div class="home-actions">
+    <div>
+        <p class="eyebrow">GET STARTED</p>
+        <h2>Manage your collection</h2>
+    </div>
+    <a class="btn btn-outline-primary" asp-page="/Cars/Index">View all cars <span aria-hidden="true">→</span></a>
+</div>

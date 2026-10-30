@@ -1,0 +1,16 @@
+@page "{id:int}"
+@model CarManagementSystem.Pages.Cars.EditModel
+@{
+    ViewData["Title"] = "Edit car";
+}
+<div class="page-header"><div><p class="eyebrow">YOUR COLLECTION</p><h1>Edit car</h1></div></div>
+<div class="card p-4 p-md-5">
+    <form method="post">
+        <input type="hidden" asp-for="Car.Id" />
+        <input type="hidden" asp-for="Car.AddedOn" />
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+        <partial name="_CarForm" model="Model.Car" />
+        <div class="d-flex gap-2 mt-4"><button class="btn btn-primary" type="submit">Save changes</button><a class="btn btn-outline-secondary" asp-page="Index">Cancel</a></div>
+    </form>
+</div>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

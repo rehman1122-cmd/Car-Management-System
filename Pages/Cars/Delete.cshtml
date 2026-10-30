@@ -1,0 +1,20 @@
+@page "{id:int}"
+@model CarManagementSystem.Pages.Cars.DeleteModel
+@{
+    ViewData["Title"] = "Delete car";
+}
+<div class="card delete-panel p-4 p-md-5">
+    <p class="eyebrow">REMOVE FROM COLLECTION</p>
+    <h1>Delete this car?</h1>
+    <p class="muted">This action cannot be undone. You are about to remove <strong>@Model.Car.Make @Model.Car.Model</strong> from your collection.</p>
+    <dl class="row mt-4">
+        <dt class="col-sm-4">Year</dt><dd class="col-sm-8">@Model.Car.Year</dd>
+        <dt class="col-sm-4">Price</dt><dd class="col-sm-8">@Model.Car.Price.ToString("C")</dd>
+        <dt class="col-sm-4">Mileage</dt><dd class="col-sm-8">@Model.Car.Mileage.ToString("N0") mi</dd>
+    </dl>
+    <form method="post" class="d-flex gap-2 mt-4">
+        <input type="hidden" asp-for="Car.Id" />
+        <button type="submit" class="btn btn-danger">Delete car</button>
+        <a class="btn btn-outline-secondary" asp-page="Index">Keep car</a>
+    </form>
+</div>

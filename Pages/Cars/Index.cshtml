@@ -1,0 +1,45 @@
+@page
+@model CarManagementSystem.Pages.Cars.IndexModel
+@{
+    ViewData["Title"] = "Cars";
+}
+
+<div class="page-header">
+    <div>
+        <p class="eyebrow">YOUR COLLECTION</p>
+        <h1>Cars</h1>
+    </div>
+    <a class="btn btn-primary" asp-page="Create">+ Add car</a>
+</div>
+
+@if (Model.Cars.Count == 0)
+{
+    <div class="card p-5 text-center">
+        <h2>Your garage is empty</h2>
+        <p class="muted">Add a car to start building your collection.</p>
+        <div><a class="btn btn-primary" asp-page="Create">Add a car</a></div>
+    </div>
+}
+else
+{
+    <div class="card overflow-hidden">
+        <div class="table-responsive">
+            <table class="table">
+                <thead><tr><th>Car</th><th>Year</th><th>Price</th><th>Mileage</th><th>Color</th><th></th></tr></thead>
+                <tbody>
+                @foreach (var car in Model.Cars)
+                {
+                    <tr>
+                        <td><div class="car-name">@car.Make @car.Model</div><small class="muted">Added @car.AddedOn.ToLocalTime().ToString("MMM d, yyyy")</small></td>
+                        <td>@car.Year</td>
+                        <td>@car.Price.ToString("C")</td>
+                        <td>@car.Mileage.ToString("N0") mi</td>
+                        <td>@(string.IsNullOrWhiteSpace(car.Color) ? "—" : car.Color)</td>
+                        <td class="text-end text-nowrap"><a class="btn btn-sm btn-outline-secondary" asp-page="Edit" asp-route-id="@car.Id">Edit</a> <a class="btn btn-sm btn-outline-danger" asp-page="Delete" asp-route-id="@car.Id">Delete</a></td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
